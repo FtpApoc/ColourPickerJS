@@ -15,19 +15,19 @@ app.use('/js', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/
 //LandingPage
 
 app.get('/',function(req,res){
-  res.render('pages/HomePage',{
+  res.render('pages/pgHomePage',{
     title: "Home Page"
   })
 });
 
 app.get('/RgbInput',function(req,res){
-  res.render('pages/RgbInput',{
+  res.render('pages/pgRgbInput',{
     title: "RGB Input"
   });
 });
 
 app.get('/ColourExt',function(req,res){
-  res.render('pages/ColourExt',{
+  res.render('pages/pgColourExt',{
     title: "Colour Extractor"
   });
 });
@@ -37,7 +37,7 @@ const ResultsRouter = require('./Middleware/midExtractResults');
 app.use('/ColourRes',ResultsRouter)
 
 app.get('/history',function(req,res){
-  res.render('pages/history',{
+  res.render('pages/pgHistory',{
     title: "History"
   })
 })

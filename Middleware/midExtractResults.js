@@ -6,10 +6,10 @@ const express = require('express');
 const ResultsRouter = express.Router();
 
 //Rendering of the page should be last so all data is available to do when loaded
-  //rendering the ColourRes.ejs page with local variables
+  //rendering the pgColourRes.ejs page with local variables
   ResultsRouter.route("/")
     .get((req,res) => {
-    res.render('pages/ColourRes',{
+    res.render('pages/pgColourRes',{
       //change the title to appropriate name
       title: "Colour Results"
   });
