@@ -23,7 +23,7 @@ app.get('/RgbInput',function(req,res){
 });
 
 app.get('/ColourExt',function(req,res){
-  res.render('pages/ColourTesting');
+  res.render('pages/ColourExt');
 });
 
 app.get('/ColourRes',function(req,res){
