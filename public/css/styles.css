@@ -11286,6 +11286,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+#canvas{
+    border:1px solid #999;
+}
+
 body {
   background-color: #403f3f;
   background-size: cover;

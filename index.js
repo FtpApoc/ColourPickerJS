@@ -15,26 +15,34 @@ app.use('/js', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/
 //LandingPage
 
 app.get('/',function(req,res){
-  res.render('pages/HomePage');
+  res.render('pages/HomePage',{
+    title: "Home Page"
+  })
 });
 
 app.get('/RgbInput',function(req,res){
-  res.render('pages/RgbInput');
+  res.render('pages/RgbInput',{
+    title: "RGB Input"
+  });
 });
 
 app.get('/ColourExt',function(req,res){
-  res.render('pages/ColourExt');
+  res.render('pages/ColourExt',{
+    title: "Colour Extractor"
+  });
 });
 
-app.get('/ColourRes',function(req,res){
-  res.render('pages/ColourRes');
-});
+//Extract Results middleware, between ColourExt and ColourRes
+const ResultsRouter = require('./Middleware/midExtractResults');
+app.use('/ColourRes',ResultsRouter)
 
-app.get('/index',function(req,res){
-  res.render('pages/index')
+app.get('/history',function(req,res){
+  res.render('pages/history',{
+    title: "History"
+  })
 })
 
 //call to listen for code on
 app.listen(port, function(){
-  console.log("listening on port "+chalk.green(port));
+  console.log(`listening on port ${chalk.green(port)}`);
 })

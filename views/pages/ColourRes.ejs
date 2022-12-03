@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<link rel="stylesheet" href="home.css">
-
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- pass in the title parameter !-->
+        <title><%=title%></title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <head>
-  <%- include('../partials/PartHeader'); %>
+
 </head>
-<body class="container">
+<body>
+  <%- include('../partials/navigation'); -%>
+  <class="container">
       <a> Colour Results page </a>
 </body>
+
 </html>
