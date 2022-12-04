@@ -11,27 +11,39 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- Testing CSS !-->
+        <link href="css/cColourExt.css" rel="stylesheet" />
+
     </head>
+
+    <header>
+      <!-- <div class="container px-4 px-lg-5 " style="z-index: 1;"> -->
+          <!-- <div class="row gx-4 gx-lg-5"> -->
+              <!-- <div class="col-lg-7"> -->
+                  <h1 class="TitleLine">Colour Extraction Tool</h1>
+              <!-- </div> -->
+          <!-- </div> -->
+      <!-- </div> -->
+    </header>
+
     <body>
         <!-- Navigation-->
         <%- include('../partials/prtNavigation'); %>
 
         <!-- Page Content-->
         <section>
-            <div class="container px-4 px-lg-5 " style="z-index: 1;">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-6">
-                        <h1 class="mt-5">Colour Extraction</h1>
-                        <p> please submit a photo below, to pick a colour: </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-          <div class="container">
+          <div class="CanvasContainer">
             <!-- Canvas Partial !-->
             <%- include('../partials/prtCanvas'); %>
+
+            <div id = rectangle>30,59,20</div>
+
+            <div id = ButtonContainer>
+              <span class = ExtButtons>
+                <button type="button" id = 'btnInputVal'>test </button>
+            </div>
           </div>
+
         <section>
     </body>
 </html>

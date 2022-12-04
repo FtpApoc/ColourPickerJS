@@ -14,7 +14,9 @@
     img.onload = function() {
 
         ctx.drawImage(img, 0, 0,canvas.width, canvas.height);
-
+        let CanvasImageData = canvas.ctx.getImageData();
+        CanvasImageArray = CanvasImageData.data;
+        console.log(CanvasImageArray)
     };
     img.src = "assets/e.jpg";
 </script>
