@@ -1,0 +1,33 @@
+/* beginning of self written CSS styles */
+div.CanvasContainer{
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+#rectangle{
+  width:100%;
+  height: 1.5vw;
+  text-align: center;
+  color: black;
+  font-size: 1vw;
+  font-kerning: ;
+  background-color: darkGrey
+}
+#ButtonContainer{
+  margin-top:2vw;
+}
+div.ExtButtons{
+  color: gray;
+}
+
+h1.TitleLine{
+  font-size: 4vw;
+  text-align: center;
+  margin-top: 1vw;
+  Color: #FFFFFF;
+  font-weight: lighter;
+}
+body {
+  background-color: #2B2B2B;
+  background-size: cover;
+}

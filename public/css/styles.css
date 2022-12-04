@@ -61,7 +61,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #89a9d9;
-  --bs-body-bg: #fff;
+  --bs-body-bg: #2B2B2B;
 }
 
 *,
@@ -11285,12 +11285,4 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-}
-#canvas{
-    border:1px solid #999;
-}
-
-body {
-  background-color: #403f3f;
-  background-size: cover;
 }
