@@ -47,7 +47,7 @@ app.get('/history',function(req,res){
 
 //Extract Results middleware, between ColourExt and ColourRes
 const ResultsRouter = require('./Middleware/midExtractResults');
-app.use('/ColourRes',ResultsRouter)
+app.use('/ColourRes',ResultsRouter);
 
 
 //call to listen for code on
