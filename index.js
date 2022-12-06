@@ -27,12 +27,6 @@ app.get('/',function(req,res){
   })
 });
 
-app.get('/RgbInput',function(req,res){
-  res.render('pages/pgRgbInput',{
-    title: "RGB Input"
-  });
-});
-
 app.get('/ColourExt',function(req,res){
   res.render('pages/pgColourExt',{
     title: "Colour Extractor"
@@ -45,7 +39,11 @@ app.get('/history',function(req,res){
   })
 })
 
-//Extract Results middleware, between ColourExt and ColourRes
+//InputRGB router, which is called from the home page
+const RgbInputRouter = require('./Middleware/midExtractResults');
+app.use('/RgbInput', RgbInputRouter)
+
+//Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
 const ResultsRouter = require('./Middleware/midExtractResults');
 app.use('/ColourRes',ResultsRouter);
 
