@@ -13,8 +13,8 @@
     img.onload = function() {
 
         ctx.drawImage(img, 0, 0,canvas.width, canvas.height);
-        let CanvasImageData = canvas.ctx.getImageData(0,0,canvas.width,canvas.height);
-        let CanvasImageArray = CanvasImageData.data();
+        let CanvasImageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+        console.log(CanvasImageData)
 
     };
     img.src = "assets/e.jpg";
