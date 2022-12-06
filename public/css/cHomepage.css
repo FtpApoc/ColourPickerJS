@@ -1,0 +1,17 @@
+div.HomePageContainer{
+  background-color: #48494a;
+  width:50vw;
+  height: 40vw;
+  margin-left: 25vw;
+  margin-right: 25vw;
+  margin-top: 3vw;
+  border: 1px solid black;
+}
+#header{
+  text-align: center;
+  font-size: 5em;
+  margin-top: 1vw;
+}
+#h1HP{
+  font-size: 100%;
+}
