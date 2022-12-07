@@ -1,4 +1,8 @@
 /* beginning of self written CSS styles */
+:root{
+    --max-width-media : 991.98;
+}
+
 div.CanvasContainer{
     width: 60vw;
     margin-left: 20vw;
