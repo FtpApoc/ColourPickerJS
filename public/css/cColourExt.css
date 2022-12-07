@@ -32,6 +32,6 @@ h1.TitleLine{
   font-weight: lighter;
 }
 body {
-  background-color: #2B2B2B;
+  /* background-color: #2B2B2B; */
   background-size: cover;
 }
