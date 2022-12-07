@@ -35,3 +35,32 @@ body {
   /* background-color: #2B2B2B; */
   background-size: cover;
 }
+.button{
+  background-color: #2b2b2b;
+  color: white;
+  padding: 2% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  font-weight:  lighter;
+  border: 3px solid #353636;
+}
+#LowerExtContainer{
+  /* background-color: blue; */
+  margin-top: 0vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+#EXTlowerBtn{
+  display: inline-block;
+  width: 300px;
+  margin: 20px;
+  font-size: 200%;
+  margin-bottom: 5%;
+}
