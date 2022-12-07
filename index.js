@@ -15,7 +15,6 @@ app.use('/js', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/
 //LandingPage
 
 navList = [
-  {href:'/',label:'Home'},
   {href:'/ColourExt',label:'Colour Extraction Tool'},
   {href:'/RgbInput',label:'RGB Input'},
   {href:'/History',label:'History'}
@@ -40,11 +39,11 @@ app.get('/history',function(req,res){
 })
 
 //InputRGB router, which is called from the home page
-const RgbInputRouter = require('./Middleware/midRgbInput');
+const RgbInputRouter = require('./public/Middleware/midRgbInput');
 app.use('/RgbInput', RgbInputRouter)
 
 //Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
-const ResultsRouter = require('./Middleware/midViewResults');
+const ResultsRouter = require('./public/Middleware/midViewResults');
 app.use('/ColourRes',ResultsRouter);
 
 
