@@ -40,11 +40,11 @@ app.get('/history',function(req,res){
 })
 
 //InputRGB router, which is called from the home page
-const RgbInputRouter = require('./Middleware/midExtractResults');
+const RgbInputRouter = require('./Middleware/midRgbInput');
 app.use('/RgbInput', RgbInputRouter)
 
 //Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
-const ResultsRouter = require('./Middleware/midExtractResults');
+const ResultsRouter = require('./Middleware/midViewResults');
 app.use('/ColourRes',ResultsRouter);
 
 
