@@ -68,6 +68,14 @@ function PixelNumGet(PixelLocation){
   PixelA = CanvasImageData[PixelNum+3]
   console.log(PixelNum,PixelR,PixelG,PixelB,PixelA)
 }
+function rgbcanvas() {
+  const RGBcanvas = document.getElementById('RGBcanvas');
+  const ctx2 = RGBcanvas.getContext('2d');
+  ctx2.beginPath();
+  ctx2.rect(20, 20, 150, 100);
+  ctx2.fillStyle = "red";
+  ctx2.fill();
+}
 
 
 Canvas();
