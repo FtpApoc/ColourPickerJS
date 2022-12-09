@@ -52,32 +52,34 @@ function PixelAdjust(
   PerCanvasX = Math.round(PercentX * CanvasWidth) //percentage X position applied to canvas
   PerCanvasY = Math.round(PercentY * CanvasHeight) //percentage Y position applied to canvas
 
-  PixelConversion(PerCanvasX,PerCanvasY,CanvasWidth)
+  //call to assignment function with previously defined values
+  PixelAssignment(PerCanvasX,PerCanvasY,CanvasWidth)
 }
-function PixelConversion(X,Y,Width){
+//function used to calculate, and display RGB value data
+function PixelAssignment(X,Y,Width){
   PixelLocation = Y * Width + X
-  PixelNumGet(PixelLocation)
-}
-
-//Holds array Data
-function PixelNumGet(PixelLocation){
   PixelNum = PixelLocation * 4
   PixelR = CanvasImageData[PixelNum]
   PixelG = CanvasImageData[PixelNum+1]
   PixelB = CanvasImageData[PixelNum+2]
   PixelA = CanvasImageData[PixelNum+3]
 
+  //Fetch API request to send RGB data to server
+
+
+  //applying given values to the RGB box
+  RgbBox(PixelR,PixelG,PixelB)
+}
+function RgbBox(r,g,b){
   let RgbBox = document.getElementById("rectangle");
-  RgbBox.innerHTML = (`${PixelR},${PixelG},${PixelB}`);
-  RgbBox.style.backgroundColor = `rgb(${PixelR},${PixelG},${PixelB})`;
-  if ((PixelR + PixelG + PixelB) < 350){
+  RgbBox.innerHTML = (`${r},${g},${b}`);
+  RgbBox.style.backgroundColor = `rgb(${r},${g},${b})`;
+  if ((r + g + b) < 350){
     RgbBox.style.color = "#FFFFFF";
   } else {
     RgbBox.style.color = "#000000";
   }
-
 }
-
 
 
 Canvas();
