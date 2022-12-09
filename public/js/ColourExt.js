@@ -66,17 +66,18 @@ function PixelNumGet(PixelLocation){
   PixelG = CanvasImageData[PixelNum+1]
   PixelB = CanvasImageData[PixelNum+2]
   PixelA = CanvasImageData[PixelNum+3]
-  console.log(PixelNum,PixelR,PixelG,PixelB,PixelA)
+
+  let RgbBox = document.getElementById("rectangle");
+  RgbBox.innerHTML = (`${PixelR},${PixelG},${PixelB}`);
+  RgbBox.style.backgroundColor = `rgb(${PixelR},${PixelG},${PixelB})`;
+  if ((PixelR + PixelG + PixelB) < 350){
+    RgbBox.style.color = "#FFFFFF";
+  } else {
+    RgbBox.style.color = "#000000";
+  }
+
 }
-function rgbcanvas() {
-  const RGBcanvas = document.getElementById('RGBcanvas');
-  const ctx2 = RGBcanvas.getContext('2d');
-  ctx2.beginPath();
-  ctx2.rect(20, 20, 150, 100);
-  ctx2.fillStyle = "red";
-  ctx2.fill();
-}
+
 
 
 Canvas();
-rgbcanvas();
