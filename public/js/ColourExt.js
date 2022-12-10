@@ -10,11 +10,9 @@ function Canvas(){
       //draw image to canvas size
       ctx.drawImage(img, 0, 0,canvas.width,canvas.height);//,canvas.width, canvas.height);
       let CanvasImageObject = ctx.getImageData(0,0,canvas.width,canvas.height+1);
-      console.log(canvas.width,canvas.height)
 
       //setting CanvasImageData to the Array in GetImageData Object
-      let CanvasImageData = Object.values(CanvasImageObject)[0]
-      console.log(CanvasImageData.length)
+      let CanvasImageData = CanvasImageObject["data"];
 
       //Click handler allows the passing of click object and canvas data to ClickUpdate
       const ClickHandler = (event) => PixelAdjust(
@@ -44,7 +42,6 @@ function PixelAdjust(
   CanvasHeight, //cavnas.height
   CanvasImageData
   ){
-  console.log("TESTING: ",CanvasImageData)
   ClientX = ClickInfo.offsetX // Pixel clicked X co-ord in client scope
   ClientY = ClickInfo.offsetY // Pixel Clicked Y co-ord in client scope
 
