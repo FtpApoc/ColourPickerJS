@@ -8,7 +8,7 @@ div.CanvasContainer{
     margin-left: 20vw;
     margin-right: 20vw;
 }
-#rectangle{
+#RgbRect{
   width:100%;
   height: 1.5vw;
   text-align: center;

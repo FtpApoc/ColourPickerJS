@@ -1,5 +1,5 @@
 //Initalization Of Canvas Data for handling later
-let CanvasImageData = []
+//let CanvasImageData = []
 
 //Initalization and loading of canvas
 function Canvas(){
@@ -7,14 +7,13 @@ function Canvas(){
   const ctx = canvas.getContext("2d");
   const img = new Image();
   img.onload = function() {
-
       //draw image to canvas size
       ctx.drawImage(img, 0, 0,canvas.width,canvas.height);//,canvas.width, canvas.height);
       let CanvasImageObject = ctx.getImageData(0,0,canvas.width,canvas.height+1);
       console.log(canvas.width,canvas.height)
 
       //setting CanvasImageData to the Array in GetImageData Object
-      CanvasImageData = Object.values(CanvasImageObject)[0]
+      let CanvasImageData = Object.values(CanvasImageObject)[0]
       console.log(CanvasImageData.length)
 
       //Click handler allows the passing of click object and canvas data to ClickUpdate
@@ -24,6 +23,7 @@ function Canvas(){
         canvas.clientHeight,
         canvas.width,
         canvas.height,
+        CanvasImageData
       )
 
       //click event, with a for loop to instance
@@ -41,8 +41,10 @@ function PixelAdjust(
   ClientWidth, //canvas.clientWidth
   ClientHeight, //canvas.clientHeight
   CanvasWidth, //canvas.width
-  CanvasHeight //cavnas.height
+  CanvasHeight, //cavnas.height
+  CanvasImageData
   ){
+  console.log("TESTING: ",CanvasImageData)
   ClientX = ClickInfo.offsetX // Pixel clicked X co-ord in client scope
   ClientY = ClickInfo.offsetY // Pixel Clicked Y co-ord in client scope
 
@@ -53,10 +55,10 @@ function PixelAdjust(
   PerCanvasY = Math.round(PercentY * CanvasHeight) //percentage Y position applied to canvas
 
   //call to assignment function with previously defined values
-  PixelAssignment(PerCanvasX,PerCanvasY,CanvasWidth)
+  PixelAssignment(PerCanvasX,PerCanvasY,CanvasWidth,CanvasImageData)
 }
 //function used to calculate, and display RGB value data
-function PixelAssignment(X,Y,Width){
+function PixelAssignment(X,Y,Width,CanvasImageData){
   PixelLocation = Y * Width + X
   PixelNum = PixelLocation * 4
   PixelR = CanvasImageData[PixelNum]
@@ -71,7 +73,7 @@ function PixelAssignment(X,Y,Width){
   RgbBox(PixelR,PixelG,PixelB)
 }
 function RgbBox(r,g,b){
-  let RgbBox = document.getElementById("rectangle");
+  let RgbBox = document.getElementById("RgbRect");
   RgbBox.innerHTML = (`${r},${g},${b}`);
   RgbBox.style.backgroundColor = `rgb(${r},${g},${b})`;
   if ((r + g + b) < 350){

@@ -5,7 +5,7 @@ const express = require('express');
 //instance of a router function to route to results
 const ResultsRouter = express.Router();
 
-const RgbValue = 0
+//const RgbValue = 0
 
 //Rendering of the page should be last so all data is available to do when loaded
   //rendering the pgColourRes.ejs page with local variables
