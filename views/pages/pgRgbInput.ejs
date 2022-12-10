@@ -13,11 +13,12 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/cRgbInput.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/RgbInput.js"></script>
     </head>
     <div Class="PageControl">
       <div class = "FocusContainer">
         <header>
-            <h1 id = "HPh1Hp"> Manual Input Page </h1>
+            <h1 id = "FocusContainerH1"> Manual Input Page </h1>
           </a>
         </header>
 
@@ -27,11 +28,11 @@
               <div id = "RgbDisplayBox"></div>
               <h2 id = "RGBh2In">Input RGB Values:</h2>
           </div>
-            <form>
+            <form id ="RgbForm">
               <div class="container" id = "FormContainer">
-                <input name="Rval" class = RGBForm>
-                <input name="Gval" class = RGBForm>
-                <input name="Bval" class = RGBForm>
+                <input name="Rval" class = RgbFormElement id = RgbFormR placeholder="Red">
+                <input name="Gval" class = RgbFormElement id = RgbFormG placeholder="Green">
+                <input name="Bval" class = RgbFormElement id = RgbFormB placeholder="Blue">
               </div>
               <div class="container" id = "FormContainer">
                 <button type="submit" class = RGBForm id = "RGBsubmitButton">Get Results</button>

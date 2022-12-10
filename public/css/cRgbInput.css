@@ -23,7 +23,7 @@
   font-weight:  lighter;
   border: 3px solid #353636;
 }
-#HPh1Hp{
+#FocusContainerH1{
   text-align: center;
   margin-top: 2vw;
   font-size: 10vmin;
@@ -61,12 +61,13 @@
   justify-content: space-around;
   align-items: space;
 }
-.RGBForm{
+.RgbFormElemnt{
   width: 8vmax;
 }
 #RGBsubmitButton{
   align-content: center;
   margin:1vw;
+  width: 24vmax;
 }
 
 #HPlowerBtn{
