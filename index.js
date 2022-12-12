@@ -1,10 +1,25 @@
  const express = require("express");
 const chalk = require("chalk");
 const debug = require("debug")("app.js");
-const path = require("path")
+const path = require("path");
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+//bodyParser
+app.use(express.json());
+
+app.post("/", (request,response) => {
+  console.log(request.body)
+  const RgbData = {
+    R : request.body.RgbFormR,
+    G : request.body.RgbFormG,
+    B : request.body.RgbFormB,
+  };
+  console.log(RgbData)
+  response.send(request.body);
+})
+
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
