@@ -17,7 +17,7 @@ app.post("/", (request,response) => {
   };
 
   response.send(request.body); //sending the data back to the client side
-  ResultsHandler(RgbData);
+  console.log(RgbData)
 })
 
 app.set("view engine", "ejs");
@@ -40,28 +40,21 @@ app.get('/',function(req,res){
   })
 });
 
-app.get('/ColourExt',function(req,res){
-  res.render('pages/pgColourExt',{
-    title: "Colour Extractor"
-  });
-});
-
-app.get('/history',function(req,res){
-  res.render('pages/pgHistory',{
-    title: "History"
-  })
-})
+//InputRGB router, which is called from the home page
+const ColourExtRouter = require('./public/Middleware/midColourExt');
+app.use('/ColourExt', ColourExtRouter)
 
 //InputRGB router, which is called from the home page
 const RgbInputRouter = require('./public/Middleware/midRgbInput');
 app.use('/RgbInput', RgbInputRouter)
 
 //Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
-function ResultsHandler(RgbData){
-  const ResultsRouter = require('./public/Middleware/midViewResults');
-  app.use('/ColourRes',ResultsRouter);
+const ResultsRouter = require('./public/Middleware/midViewResults');
+app.use('/ColourRes',ResultsRouter);
 
-}
+//Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
+const HistoryRouter = require('./public/Middleware/midHistory');
+app.use('/History',HistoryRouter);
 
 
 //call to listen for code on
