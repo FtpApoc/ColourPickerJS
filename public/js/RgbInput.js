@@ -1,17 +1,9 @@
 const form = document.getElementById('RgbForm');
 
-console.log("RgbInput.js Connected")
-
-function RgbBoxUpdate(){
-  console.log("form has changed");
-  };
-
-console.log(form);
 let PassArray = [0,0,0]
 
-function PassToBox(){
+function PassToJSON(){
   const RGBlist = [RgbFormR,RgbFormG,RgbFormB];
-  let FormEntry = false;
 
   for (let i = 0; i < RGBlist.length; i++){
     L = RGBlist[i] // L for letter for RGB purposes
@@ -22,4 +14,31 @@ function PassToBox(){
     }
 };
 
-form.addEventListener("change", PassToBox);
+async function postFormDataAsJson({url, formData}){
+  const FormDataJson = JSON.stringify(Object.fromEntries(formData.entries()));
+    const FetchOptions = {method:"POST",headers:{
+      "Content-Type":"application/json",
+      "Accept":"application/json"
+    },
+    body: FormDataJson
+  };
+  const response = await fetch(url, FetchOptions);
+  return response.json();
+}
+
+async function SubmitHandling(event){
+  event.preventDefault();
+  const url = "/";//form.action;
+  try{
+    const formData = new FormData(form);
+    const responseData = await postFormDataAsJson({url, formData})
+    // console.log(responseData)
+    form.reset()
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+form.addEventListener("change", PassToJSON);
+form.addEventListener("submit", SubmitHandling);
