@@ -1,12 +1,11 @@
-//This middleware is designed to call to a MongoDB database, with a query of a given RGB value, in order to return a paint name
-//also used to render the Results page EJS.
+//also used to render the Colour Extension page EJS.
 
 const express = require('express');
-//instance of a router function to route to results
+//instance of a router function to route to Colour Extension
 const ColourExtRouter = express.Router();
 
 //Rendering of the page should be last so all data is available to do when loaded
-  //rendering the pgColourRes.ejs page with local variables
+  //rendering the pgColourExt.ejs page with local variables
   ColourExtRouter.route("/")
       .get((req,res) => {
         res.render('pages/pgColourExt',{

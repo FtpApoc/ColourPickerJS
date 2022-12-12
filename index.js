@@ -26,36 +26,35 @@ app.use(express.static("public"));
 app.use('/css', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/css')))
 app.use('/js', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/js')))
 
-//LandingPage
-
+//NavList used to populate nav-bar in prtNavigation.ejs
 navList = [
   {href:'/ColourExt',label:'Colour Extraction Tool'},
   {href:'/RgbInput',label:'RGB Input'},
   {href:'/History',label:'History'}
 ]
 
+//Automatic Rendering of the home page on entry to the site.
 app.get('/',function(req,res){
   res.render('pages/pgHomePage',{
     title: "Home Page"
   })
 });
 
-//InputRGB router, which is called from the home page
+//Colour Extraction Router, which is called from the home page or nav-bar
 const ColourExtRouter = require('./public/Middleware/midColourExt');
 app.use('/ColourExt', ColourExtRouter)
 
-//InputRGB router, which is called from the home page
+//InputRGB router, which is called from the home page or nav-bar
 const RgbInputRouter = require('./public/Middleware/midRgbInput');
 app.use('/RgbInput', RgbInputRouter)
+
+//History router, which can be called from the home page or nav-bar
+const HistoryRouter = require('./public/Middleware/midHistory');
+app.use('/History',HistoryRouter);
 
 //Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
 const ResultsRouter = require('./public/Middleware/midViewResults');
 app.use('/ColourRes',ResultsRouter);
-
-//Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
-const HistoryRouter = require('./public/Middleware/midHistory');
-app.use('/History',HistoryRouter);
-
 
 //call to listen for code on
 app.listen(port, function(){
