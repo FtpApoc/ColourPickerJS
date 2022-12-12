@@ -11,9 +11,9 @@ app.use(express.json());
 //Post Request from RGB Form
 app.post("/", (request,response) => {
   const RgbData = {
-    R : request.body.RgbFormR,
-    G : request.body.RgbFormG,
-    B : request.body.RgbFormB,
+    R : request.body.R,
+    G : request.body.G,
+    B : request.body.B,
   };
 
   response.send(request.body); //sending the data back to the client side
