@@ -28,7 +28,7 @@ async function postFormDataAsJson({url, formData}){
 
 async function SubmitHandling(event){
   event.preventDefault();
-  const url = "/";//form.action;
+  const url = "/"; // send to Results instead
   try{
     const formData = new FormData(form);
     const responseData = await postFormDataAsJson({url, formData})

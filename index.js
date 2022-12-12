@@ -6,20 +6,19 @@ const path = require("path");
 const port = process.env.PORT || 3000;
 const app = express();
 
-//bodyParser
+//Express.JSON usage [NEEDS TO BE MOVED INTO RESULTS]
 app.use(express.json());
-
+//Post Request from RGB Form
 app.post("/", (request,response) => {
-  console.log(request.body)
   const RgbData = {
     R : request.body.RgbFormR,
     G : request.body.RgbFormG,
     B : request.body.RgbFormB,
   };
-  console.log(RgbData)
-  response.send(request.body);
-})
 
+  response.send(request.body); //sending the data back to the client side
+  ResultsHandler(RgbData);
+})
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -58,8 +57,11 @@ const RgbInputRouter = require('./public/Middleware/midRgbInput');
 app.use('/RgbInput', RgbInputRouter)
 
 //Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
-const ResultsRouter = require('./public/Middleware/midViewResults');
-app.use('/ColourRes',ResultsRouter);
+function ResultsHandler(RgbData){
+  const ResultsRouter = require('./public/Middleware/midViewResults');
+  app.use('/ColourRes',ResultsRouter);
+
+}
 
 
 //call to listen for code on
