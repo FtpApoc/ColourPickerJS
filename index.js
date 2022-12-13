@@ -9,7 +9,7 @@ const app = express();
 //Express.JSON usage [NEEDS TO BE MOVED INTO RESULTS]
 app.use(express.json());
 //Post Request from RGB Form
-app.post("/", (request,response) => {
+app.post("/ColourRes", (request,response) => {
   const RgbData = {
     R : request.body.R,
     G : request.body.G,

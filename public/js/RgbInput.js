@@ -16,7 +16,7 @@ function PassToJSON(){
     }
 };
 
-async function postFormDataAsJson({url }){ //formData
+async function postFormDataAsJson(url){
   const PassArrayJson = JSON.stringify({
     "R":`${PassArray[0]}`,
     "G":`${PassArray[1]}`,
@@ -34,12 +34,14 @@ async function postFormDataAsJson({url }){ //formData
 
 async function SubmitHandling(event){
   event.preventDefault();
-  const url = "/"; // send to Results instead
+  const url = "/ColourRes"; // send to Results instead
   try{
-    const responseData = await postFormDataAsJson({url})
+    const responseData = await postFormDataAsJson(url)
   } catch (error) {
     console.log(error);
   }
+  console.log(event);
+  form.submit();
 };
 
 
