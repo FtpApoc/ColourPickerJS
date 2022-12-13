@@ -7,7 +7,7 @@ function PassToJSON(){
 
   for (let i = 0; i < RGBlist.length; i++){
     L = RGBlist[i] // L for letter for RGB purposes
-    if ((L.value != "") && (parseInt(L.value) < 255)){
+    if ((L.value != "") && (parseInt(L.value) <= 255) && (parseInt(L.value) >= 0)){
       PassArray[i] = RGBlist[i].value;
       } else {
         PassArray[i] = 0
