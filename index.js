@@ -33,7 +33,6 @@ app.post("/ColourRes", (request,response) => {
   response.send(request.body); //sending the data back to the client side
 })
 
-
 //Automatic Rendering of the home page on entry to the site.
 app.get('/',function(req,res){
   res.render('pages/pgHomePage',{

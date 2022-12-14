@@ -18,6 +18,7 @@
     "get-image-data": "^5.0.0",
     "jimp": "^0.16.2",
     "mongodb": "^4.12.1",
+    "mongoose": "^6.8.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
     "path": "^0.12.7",
