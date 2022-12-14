@@ -16,7 +16,8 @@ const ResultsRouter = express.Router();
       //change the title to appropriate name
       title: "Colour Results",
       RgbData: `${req.RgbDataString}`,
-      PaintName: `${req.PaintName}`
+      PaintName: `${req.PaintName}`,
+      PaintRgb: `${req.PaintRgb}`
   });
 });
 
@@ -40,10 +41,10 @@ async function CallToDatabase(req,res,next){
 
   });
 
-  //Steamed Chestnut Colour
-  red = 211
-  green = 177
-  blue = 125
+  // //Steamed Chestnut Colour
+  // red = 211
+  // green = 177
+  // blue = 125
 
   const paintSchema = new mongoose.Schema({
     ColourName: String,
@@ -54,26 +55,62 @@ async function CallToDatabase(req,res,next){
   })
 
   console.log("RGB", req.RgbData)
-  console.log("RGB", req.RgbData.R)
 
   PaintTesting =  mongoose.models.PaintQuery || mongoose.model("PaintQuery",paintSchema,"Paints")
-  //module.exports = PaintTesting
   await PaintCollectionQuery()
 
   async function PaintCollectionQuery(){
-    const Paint = await PaintTesting
-    .where("DbR").equals(req.RgbData.R)
-    .where("DbG").equals(req.RgbData.G)
-    .where("DbB").equals(req.RgbData.B)
-    .select("ColourName")
+    console.log("enters PaintCollectionQuery")
+    let FoundPaint = false;
+    //RGB increment
+    // //setting upper and lower bounds for RgbData Red
+    // let RgbDataRlb = parseInt(req.RgbData.R);
+    // let RgbDataRub =  parseInt(req.RgbData.R);
+    // console.log(RgbDataRlb+1,RgbDataRub+1)
+    // //setting upper and lower bounds for RgbData Green
+    // let RgbDataGlb = parseInt(req.RgbData.G);
+    // let RgbDataGub = parseInt(req.RgbData.G);
+    // //setting upper and lower bounds for RgbData Green
+    // let RgbDataBlb = parseInt(req.RgbData.B);
+    // let RgbDataBub = parseInt(req.RgbData.B);
+    // const RgbDataBounds = [RgbDataRlb,RgbDataRub,RgbDataGlb,RgbDataGub,RgbDataBlb,RgbDataBub]
 
-    const PaintName = ((Paint[0]["ColourName"]));
-    console.log(PaintName);
-    req.PaintName = PaintName;
+    let i = 1;
+    let R = parseInt(req.RgbData.R);
+    let G = parseInt(req.RgbData.G);
+    let B = parseInt(req.RgbData.B);
+
+    do {
+      console.log("enters Do Statement")
+      const Paint = await PaintTesting
+      .where("DbR").lt((R)+i).gt((R)-i)
+      .where("DbG").lt((G)+i).gt((G)-i)
+      .where("DbB").lt((B)+i).gt((B)-i)
+      //.select("ColourName")
+      if ((Paint ) && (Paint != "")){
+        console.log("PaintFound")
+        FoundPaint = true
+            const PaintName = ((Paint[0]["ColourName"]));
+            const PaintR = ((Paint[0]["DbR"]));
+            const PaintG = ((Paint[0]["DbG"]));
+            const PaintB = ((Paint[0]["DbB"]));
+            let PaintRgb = [PaintR,PaintG,PaintB];
+            req.PaintName = PaintName;
+            req.PaintRgb = PaintRgb;
+
+            console.log("the req center",req.PaintName);
+            next()
+      } else {
+        i += 1;
+        console.log(i)
+        FoundPaint = false;
+        console.log(FoundPaint)
+      }
+    }
+    while (FoundPaint === false);
   }
-  console.log("the req center",req.PaintName);
-  next()
 }
+
 
 //still no clue
 module.exports = ResultsRouter;
