@@ -1,5 +1,7 @@
+//establishing form element in Script JS
 const form = document.getElementById('RgbForm');
 
+//Established to hold passable array data about RGB form inputs
 let PassArray = [0,0,0]
 
 function PassToJSON(){
@@ -16,8 +18,22 @@ function PassToJSON(){
     }
 };
 
+
+
+//handling submit event
+async function SubmitHandling(event){
+  const url = "/ColourRes";
+  try{
+    const responseData = await postFormDataAsJson(url)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//turns RGB inputs into JSON data
 async function postFormDataAsJson(url){
   const PassArrayJson = JSON.stringify({
+    //using the PassToJSON array
     "R":`${PassArray[0]}`,
     "G":`${PassArray[1]}`,
     "B":`${PassArray[2]}`
@@ -26,24 +42,13 @@ async function postFormDataAsJson(url){
     "Content-Type":"application/json",
     "Accept":"application/json"
   },
+    //JSONified Array
     body: PassArrayJson
   };
   const response = await fetch(url, FetchOptions);
   return response.json();
 }
 
-async function SubmitHandling(event){
-  event.preventDefault();
-  const url = "/ColourRes"; // send to Results instead
-  try{
-    const responseData = await postFormDataAsJson(url)
-  } catch (error) {
-    console.log(error);
-  }
-  console.log(event);
-  form.submit();
-};
-
-
+//Event listeners for changes to the form, and submittion of the form
 form.addEventListener("change", PassToJSON);
 form.addEventListener("submit", SubmitHandling);

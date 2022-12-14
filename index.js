@@ -5,20 +5,7 @@ const path = require("path");
 
 const port = process.env.PORT || 3000;
 const app = express();
-
-//Express.JSON usage [NEEDS TO BE MOVED INTO RESULTS]
 app.use(express.json());
-//Post Request from RGB Form
-app.post("/ColourRes", (request,response) => {
-  const RgbData = {
-    R : request.body.R,
-    G : request.body.G,
-    B : request.body.B,
-  };
-
-  response.send(request.body); //sending the data back to the client side
-  console.log(RgbData)
-})
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -32,6 +19,20 @@ navList = [
   {href:'/RgbInput',label:'RGB Input'},
   {href:'/History',label:'History'}
 ]
+
+//Post Request from RGB Form, send to Results Middleware
+app.post("/ColourRes", (request,response) => {
+  const RgbData = {
+    R : request.body.R, //Red Value of querying colour
+    G : request.body.G, //Green Value of querying colour
+    B : request.body.B, //Blue Value of querying colour
+  };
+
+  app.locals.RgbData = RgbData; //storing RGB data for Results Middleware
+
+  response.send(request.body); //sending the data back to the client side
+})
+
 
 //Automatic Rendering of the home page on entry to the site.
 app.get('/',function(req,res){
@@ -53,7 +54,7 @@ const HistoryRouter = require('./public/Middleware/midHistory');
 app.use('/History',HistoryRouter);
 
 //Extract Results middleware, between ColourExt and ColourRes [NEEDS TO BE MOVED]
-const ResultsRouter = require('./public/Middleware/midViewResults');
+const ResultsRouter = require('./public/Middleware/midColourResults');
 app.use('/ColourRes',ResultsRouter);
 
 //call to listen for code on
