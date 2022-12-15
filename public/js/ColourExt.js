@@ -80,5 +80,41 @@ function RgbBox(r,g,b){
   }
 }
 
+//handling submit event
+async function ResultsHandling(event){
+  // event.preventDefault();
+  // console.log("testing");
+  const url = "/ColourRes";
+  try{
+    const responseData = await postFormDataAsJson(url)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//turns RGB inputs into JSON data
+async function postFormDataAsJson(url){
+  const PassArrayJson = JSON.stringify({
+    //using the PassToJSON array
+    "R":`${PixelR}`,
+    "G":`${PixelG}`,
+    "B":`${PixelB}`
+  });
+  const FetchOptions = {method:"POST",headers:{
+    "Content-Type":"application/json",
+    "Accept":"application/json"
+  },
+    //JSONified Array
+    body: PassArrayJson
+  };
+  const response = await fetch(url, FetchOptions);
+  return response.json();
+
+};
+
+//Event listeners for changes to the form, and submittion of the form
+GetRes = document.getElementById("GetResultsBtn")
+GetRes.addEventListener("click",ResultsHandling)
+
 
 Canvas();

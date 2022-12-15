@@ -27,7 +27,6 @@ function DataPull(req,res,next){
   RgbDataArray = [RgbDataObject["R"],RgbDataObject["G"],RgbDataObject["B"]]
   req.RgbData = RgbDataObject;
   req.RgbDataArray = RgbDataArray;
-  //console.log("TEST",RgbData)
   next()
 }
 
@@ -36,15 +35,8 @@ async function CallToDatabase(req,res,next){
   mongoose.set('strictQuery', true);
   mongoose.connect(url,
     () => {
-      console.log("connected")
-      //const collection = cl
 
   });
-
-  // //Steamed Chestnut Colour
-  // red = 211
-  // green = 177
-  // blue = 125
 
   const paintSchema = new mongoose.Schema({
     ColourName: String,
@@ -54,13 +46,10 @@ async function CallToDatabase(req,res,next){
     DbB: Number
   })
 
-  console.log("RGB", req.RgbData)
-
   PaintTesting =  mongoose.models.PaintQuery || mongoose.model("PaintQuery",paintSchema,"Paints")
   await PaintCollectionQuery()
 
   async function PaintCollectionQuery(){
-    console.log("enters PaintCollectionQuery")
     let FoundPaint = false;
 
     let i = 1;
@@ -69,14 +58,12 @@ async function CallToDatabase(req,res,next){
     let B = parseInt(req.RgbData.B);
 
     do {
-      console.log("enters Do Statement")
       const Paint = await PaintTesting
       .where("DbR").lt((R)+i).gt((R)-i)
       .where("DbG").lt((G)+i).gt((G)-i)
       .where("DbB").lt((B)+i).gt((B)-i)
       //.select("ColourName")
       if ((Paint ) && (Paint != "")){
-        console.log("PaintFound")
         FoundPaint = true
             const PaintName = ((Paint[0]["ColourName"]));
             const PaintR = ((Paint[0]["DbR"]));
@@ -85,14 +72,10 @@ async function CallToDatabase(req,res,next){
             let PaintRgb = [PaintR,PaintG,PaintB];
             req.PaintName = PaintName;
             req.PaintRgb = PaintRgb;
-
-            console.log("the req center",req.PaintName);
             next()
       } else {
         i += 1;
-        console.log(i)
         FoundPaint = false;
-        console.log(FoundPaint)
       }
     }
     while (FoundPaint === false);
