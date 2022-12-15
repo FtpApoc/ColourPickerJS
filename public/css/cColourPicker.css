@@ -1,0 +1,266 @@
+.PageControl{
+  display:flex;
+  justify-content: center;
+  align-content: center;
+}
+.FocusContainer{
+  background-color: #212529;
+  margin: 3%;
+  width:1000px;
+  min-height: 600px;
+  height: 100%;
+  border: 2px solid #575757;
+}
+.button{
+  background-color: #2b2b2b;
+  color: white;
+  padding: 2% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  font-weight:  lighter;
+  border: 3px solid #353636;
+}
+
+/* Home Page Elements*/
+#HPh1Hp{
+  text-align: center;
+  margin-top: 2vw;
+  font-size: 10vmin;
+  color: #FFFFFF;
+  font-weight: lighter;
+
+}
+#HPh2As{
+  margin-top: 7%;
+  font-size: 5vh;
+  text-align: center;
+}
+#HPbtnCe{
+  font-size: 7vmin;
+  margin-top: 5%;
+  width: 40vmin;
+  height: 30vmin;
+}
+
+#LowerContainer{
+  /* background-color: blue; */
+  margin-top: 2vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+#HPlowerBtn{
+  display: inline-block;
+  width: 300px;
+  margin: 20px;
+  font-size: 200%;
+  margin-bottom: 5%;
+}
+
+/* Rgb Input Page */
+.RgbFormElement{
+  min-width: 170px;
+  width: 30%;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 2% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  font-weight:  lighter;
+  border: 3px solid #353636;
+}
+#FocusContainerH1{
+  text-align: center;
+  margin-top: 2vw;
+  font-size: 10vmin;
+  color: #FFFFFF;
+  font-weight: lighter;
+
+}
+#RGBh2In{
+  margin-top: 2%;
+  font-size: 4vh;
+  text-align: center;
+}
+#RgbDisplayBox{
+  background-color: rgb(122,122,122);
+  color: white;
+  padding: 2% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  font-weight:  lighter;
+  border: 3px solid #353636;
+  font-size: 7vmin;
+  margin-top: 5%;
+  width: 50vmin;
+  height: 30vmin;
+}
+#FormContainer{
+  /* background-color: blue; */
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: space;
+  align-content: center;
+}
+#RGBsubmitButton{
+  align-content: center;
+  margin: 1vw;
+  width: 24vmax;
+  font-size: 25px;
+
+  background-color: #2b2b2b;
+  color: white;
+  padding: 2% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  font-weight:  lighter;
+  border: 3px solid #353636;
+}
+
+/* Colour Results Page */
+.DisplayBox{
+  color: white;
+  padding: 2% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  margin: 0 auto;
+  cursor: pointer;
+  font-weight:  lighter;
+  border: 3px solid #353636;
+  font-size: 7vmin;
+  margin-top: 5%;
+  width: 20vmin;
+  height: 20vmin;
+}
+#DisplayBoxContainer{
+  margin-top: 2vw;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+/* Paint Display */
+#PaintDisplayContainer{
+  max-width: 50%;
+  min-width: 25vh;
+  margin:0 auto;
+  /* display:flex;
+  flex-direction: column; */
+}
+#PaintDisplayBox{
+  background-color: rgb(122,122,122);
+}
+#PaintNameH2{
+  margin-top: 2%;
+  font-size: 4vh;
+  text-align: center;
+}
+
+/* Reference Display */
+#ReferenceContainer{
+  max-width: 50%;
+  min-width: 25vh;
+  margin: 0 auto;
+  /* display:flex;
+  flex-direction: column; */
+}
+#ReferenceDisplayBox{
+  background-color: rgb(120,120,120);
+}
+.RgbText{
+  font-weight: bolder;
+  margin-bottom: 5vh;
+  margin-top: 2%;
+  font-size: 3vh;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+/* Colour Extraction Page */
+.CanvasContainer{
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+#RgbRect{
+  width:100%;
+  height: 1.5vw;
+  text-align: center;
+  color: #000000;
+  font-size: 1vw;
+  font-kerning: ;
+  background-color: rgb(192,192,192)
+}
+#ButtonContainer{
+  margin-top:2vw;
+}
+div.ExtButtons{
+  color: gray;
+}
+
+h1.TitleLine{
+  font-size: 4vw;
+  text-align: center;
+  margin-top: 1vw;
+  Color: #FFFFFF;
+  font-weight: lighter;
+}
+body {
+  /* background-color: #2B2B2B; */
+  background-size: cover;
+}
+.button{
+  background-color: #2b2b2b;
+  color: white;
+  padding: 2% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  font-weight:  lighter;
+  border: 3px solid #353636;
+}
+#LowerExtContainer{
+  /* background-color: blue; */
+  margin-top: 0vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+#EXTlowerBtn{
+  display: inline-block;
+  width: 300px;
+  margin: 20px;
+  font-size: 200%;
+  margin-bottom: 5%;
+}
