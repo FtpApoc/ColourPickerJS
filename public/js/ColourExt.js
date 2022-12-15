@@ -31,7 +31,32 @@ function Canvas(){
       }
 
   };
-  img.src = "assets/e.jpg";
+  const SubmitPhoto = document.getElementById("SubmitPhoto");
+
+  function PhotoHandler(event){
+    console.log(event)
+    let  UploadedImage = "didnt work";
+    const reader = new FileReader();
+    reader.readAsDataURL(SubmitPhoto.files[0])
+    reader.addEventListener("load", () => {
+      UploadedImage = reader.result;
+      console.log("TESTING",UploadedImage)
+      img.src = UploadedImage
+    })
+    // console.log(event.value)
+    // console.log(SubmitPhoto.value)
+    // console.log(SubmitPhoto)
+    // console.log(UploadedImage)
+  }
+
+
+
+
+
+
+
+  SubmitPhoto.addEventListener("change",PhotoHandler)
+  img.src = '/assets/e.jpg';
 }
 //Combining All Elements needed to generate Pixel Location
 function PixelAdjust(
