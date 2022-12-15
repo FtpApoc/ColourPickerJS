@@ -194,17 +194,10 @@
   font-size: 3vh;
   text-align: center;
 }
-
-
-
-
-
-
-
-
 /* Colour Extraction Page */
 .CanvasContainer{
     width: 60vw;
+    min-width: 10px;
     margin-left: 20vw;
     margin-right: 20vw;
 }
@@ -248,13 +241,13 @@ body {
   border: 3px solid #353636;
 }
 #LowerExtContainer{
-  /* background-color: blue; */
-  margin-top: 1vw;
+  margin-top: 2vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
-  align-content: center;
+  align-items: flex-start;
+  align-content: space-around;
+  gap: 50px;
 }
 
 .EXTlowerBtn{
@@ -262,7 +255,8 @@ body {
   width: 300px;
   margin: 20px;
   font-size: 200%;
-  margin-bottom: 5%;
+  margin-bottom: 0vh;
+  margin-top: 1vh;
   background-color: #2b2b2b;
   color: white;
   padding: 2% 2%;
@@ -273,6 +267,13 @@ body {
   cursor: pointer;
   font-weight:  lighter;
   border: 3px solid #353636;
-
-
+}
+#SubmitPhoto{
+  background-color: #242424;
+  width:12vmax;
+  position: absolute;
+  margin-left: 25vw;
+  top:50%;
+  display: flex;
+  align-self: center;
 }
