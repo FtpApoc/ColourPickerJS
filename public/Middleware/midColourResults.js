@@ -15,7 +15,7 @@ const ResultsRouter = express.Router();
     res.render('pages/pgColourRes',{
       //change the title to appropriate name
       title: "Colour Results",
-      RgbData: `${req.RgbDataString}`,
+      RgbData: `${req.RgbDataArray}`,
       PaintName: `${req.PaintName}`,
       PaintRgb: `${req.PaintRgb}`
   });
@@ -23,10 +23,10 @@ const ResultsRouter = express.Router();
 
 //Retrieves Data and prepares it to be dealt with to
 function DataPull(req,res,next){
-  const RgbData = req.app.locals.RgbData;
-  const RgbDataString = JSON.stringify(RgbData);
-  req.RgbDataString = RgbDataString;
-  req.RgbData = RgbData;
+  const RgbDataObject = req.app.locals.RgbData;
+  RgbDataArray = [RgbDataObject["R"],RgbDataObject["G"],RgbDataObject["B"]]
+  req.RgbData = RgbDataObject;
+  req.RgbDataArray = RgbDataArray;
   //console.log("TEST",RgbData)
   next()
 }
@@ -62,18 +62,6 @@ async function CallToDatabase(req,res,next){
   async function PaintCollectionQuery(){
     console.log("enters PaintCollectionQuery")
     let FoundPaint = false;
-    //RGB increment
-    // //setting upper and lower bounds for RgbData Red
-    // let RgbDataRlb = parseInt(req.RgbData.R);
-    // let RgbDataRub =  parseInt(req.RgbData.R);
-    // console.log(RgbDataRlb+1,RgbDataRub+1)
-    // //setting upper and lower bounds for RgbData Green
-    // let RgbDataGlb = parseInt(req.RgbData.G);
-    // let RgbDataGub = parseInt(req.RgbData.G);
-    // //setting upper and lower bounds for RgbData Green
-    // let RgbDataBlb = parseInt(req.RgbData.B);
-    // let RgbDataBub = parseInt(req.RgbData.B);
-    // const RgbDataBounds = [RgbDataRlb,RgbDataRub,RgbDataGlb,RgbDataGub,RgbDataBlb,RgbDataBub]
 
     let i = 1;
     let R = parseInt(req.RgbData.R);

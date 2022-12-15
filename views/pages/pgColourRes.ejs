@@ -11,25 +11,43 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/cColourPicker.css" rel="stylesheet"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<head>
+    </head>
+    <div Class="PageControl">
+      <div class = "FocusContainer">
+        <header>
+            <h1 id = "FocusContainerH1"> Colour Results </h1>
+        </header>
 
-</head>
-<body>
-
-  <class="container">
-      <p> Colour Results page </p>
-      <p> <%=RgbData%> </p>
-      <p> <%=PaintName%> </p>
-      <p> <%=PaintRgb%> </p>
-
+        <body>
+          <div class="container" id = "DisplayBoxContainer">
 
 
-</body>
+            <div class="container" id = "PaintDisplayContainer">
+              <div class = "DisplayBox" id = "PaintDisplayBox"></div>
+              <p id="PaintNameH2"><%=PaintName%></p>
+              <p class="RgbText" id="RgbTextPaint">PaintRgbValue</p>
+            </div>
+
+
+            <div class="container" id = "ReferenceContainer">
+              <div class = "DisplayBox" id = "ReferenceDisplayBox"></div>
+              <p id="PaintNameH2">Selected Colour</p>
+              <div class="RgbText" id="RgbTextRef">PaintRgbValue</p>
+            </div>
+
+            <!-- Inputs to obtain EJS data in JS scripting -->
+            <input type="text" id="PaintRgb" style="display: none" value="<%=PaintRgb%>">
+            <input type="text" id="RefRgbData" style="display: none" value="<%=RgbData%>">
+
+
+      </body>
 
 <footer>
   <!-- Navigation-->
   <%- include('../partials/prtNavigation'); %>
 </footer>
 
+<script src="js/ColourRes.js"></script>
 </html>
