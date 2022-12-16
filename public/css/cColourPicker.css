@@ -277,3 +277,18 @@ body {
   display: flex;
   align-self: center;
 }
+/* History Page */
+.ComingSoonContainer{
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  gap: 50px;
+}
+#ComingSoon2{
+  margin-left: 20px;
+  margin-right: 20px;
+}

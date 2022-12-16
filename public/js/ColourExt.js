@@ -43,20 +43,10 @@ function Canvas(){
       console.log("TESTING",UploadedImage)
       img.src = UploadedImage
     })
-    // console.log(event.value)
-    // console.log(SubmitPhoto.value)
-    // console.log(SubmitPhoto)
-    // console.log(UploadedImage)
+
   }
-
-
-
-
-
-
-
   SubmitPhoto.addEventListener("change",PhotoHandler)
-  img.src = '/assets/e.jpg';
+  img.src = '/assets/TestImg.jpg';
 }
 //Combining All Elements needed to generate Pixel Location
 function PixelAdjust(
