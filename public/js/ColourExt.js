@@ -34,13 +34,11 @@ function Canvas(){
   const SubmitPhoto = document.getElementById("SubmitPhoto");
 
   function PhotoHandler(event){
-    console.log(event)
-    let  UploadedImage = "didnt work";
+    let  UploadedImage = "";
     const reader = new FileReader();
     reader.readAsDataURL(SubmitPhoto.files[0])
     reader.addEventListener("load", () => {
       UploadedImage = reader.result;
-      console.log("TESTING",UploadedImage)
       img.src = UploadedImage
     })
 
@@ -97,8 +95,6 @@ function RgbBox(r,g,b){
 
 //handling submit event
 async function ResultsHandling(event){
-  // event.preventDefault();
-  // console.log("testing");
   const url = "/ColourRes";
   try{
     const responseData = await postFormDataAsJson(url)
