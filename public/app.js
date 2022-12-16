@@ -3,3 +3,4 @@ if ('serviceWorker' in navigator) {
         .then(reg => console.log('service worker registered'))
         .catch(err => console.log('service worker not registered', err));
 }
+//check whether service worker is supported int he browser, and activate serviceWorker script

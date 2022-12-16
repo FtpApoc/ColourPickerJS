@@ -3,10 +3,12 @@ const chalk = require("chalk");
 const debug = require("debug")("app.js");
 const path = require("path");
 
+//set port with additional backup in case of failure
 const port = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 
+//setting templating engine to ejs
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 //setting alternate paths for bootstrap to the program to look in /public first, then /bootstrap/dist for relevant css and js files

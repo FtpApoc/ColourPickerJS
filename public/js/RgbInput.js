@@ -5,16 +5,17 @@ const form = document.getElementById('RgbForm');
 let PassArray = [0,0,0]
 
 function PassToJSON(){
+  //creation of RGB array
   const RGBlist = [RgbFormR,RgbFormG,RgbFormB];
 
   for (let i = 0; i < RGBlist.length; i++){
     L = RGBlist[i] // L for letter for RGB purposes
-    if ((L.value != "") && (parseInt(L.value) <= 255) && (parseInt(L.value) >= 0)){
-      PassArray[i] = RGBlist[i].value;
+    if ((L.value != "") && (parseInt(L.value) <= 255) && (parseInt(L.value) >= 0)){ // validation of data inputs, coupled with front end type-setting
+      PassArray[i] = RGBlist[i].value; //assinging form data into manipulable and vetted array
       } else {
-        PassArray[i] = 0
+        PassArray[i] = 0 //always establishing 0s for incorrect data, if it somehow passed through front end
       }
-      RgbDisplayBox.style.backgroundColor = `rgb(${PassArray[0]},${PassArray[1]},${PassArray[2]})`;
+      RgbDisplayBox.style.backgroundColor = `rgb(${PassArray[0]},${PassArray[1]},${PassArray[2]})`; //assignment of RGB swatch box to live update for accepted data
     }
 };
 
@@ -22,8 +23,10 @@ function PassToJSON(){
 
 //handling submit event
 async function SubmitHandling(event){
+  //sending through colour result routing
   const url = "/ColourRes";
   try{
+    //async function to complete Data querying
     const responseData = await postFormDataAsJson(url)
   } catch (error) {
     console.log(error);

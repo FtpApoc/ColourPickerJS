@@ -24,7 +24,8 @@
   border: 3px solid #353636;
 }
 
-/* Home Page Elements*/
+
+/* Home Page*/
 #HPh1Hp{
   text-align: center;
   margin-top: 2vw;
@@ -46,7 +47,6 @@
 }
 
 #LowerContainer{
-  /* background-color: blue; */
   margin-top: 2vw;
   display: flex;
   flex-wrap: wrap;
@@ -69,6 +69,8 @@
     font-size: 200%;
     margin-bottom: 5%;
 }
+
+
 
 /* Rgb Input Page */
 .RgbFormElement{
@@ -114,7 +116,6 @@
   height: 30vmin;
 }
 #FormContainer{
-  /* background-color: blue; */
   width: 60%;
   margin: 0 auto;
   display: flex;
@@ -139,6 +140,8 @@
   font-weight:  lighter;
   border: 3px solid #353636;
 }
+
+
 
 /* Colour Results Page */
 .DisplayBox{
@@ -201,6 +204,8 @@
   font-size: 3vh;
   text-align: center;
 }
+
+
 /* Colour Extraction Page */
 .CanvasContainer{
     width: 60vw;

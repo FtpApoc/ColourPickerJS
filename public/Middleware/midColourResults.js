@@ -12,9 +12,10 @@ const ResultsRouter = express.Router();
 //Rendering of the page should be last so all data is available to do when loaded
   //rendering the pgColourRes.ejs page with local variables
   ResultsRouter.route("/")
+    //chaining middleware from DataPull to Call to Database. after this is concluded the page can be rendered last.
     .get(DataPull, CallToDatabase,(req,res) => {
     res.render('pages/pgColourRes',{
-      //change the title to appropriate name
+      //passing data to front-end EJS
       title: "Colour Results",
       RgbData: `${req.RgbDataArray}`,
       PaintName: `${req.PaintName}`,
@@ -32,12 +33,15 @@ function DataPull(req,res,next){
 }
 
 async function CallToDatabase(req,res,next){
-  const url = 'mongodb+srv://dbUser:PasswordForTesting@colourpickerjs.jwzryq7.mongodb.net/ColourPickerJS?retryWrites=true&w=majority';
+  //online mongodb Atlas database of assorted paint data
+  const url = 'mongodb+srv://dbUser:PasswordForTesting@colourpickerjs.jwzryq7.mongodb.net/ColourPickerJS?retryWrites=true&w=majority'; //specific reference to /ColourPickerJS database
   mongoose.set('strictQuery', true);
+  //connection to database
   mongoose.connect(url,
     () => {
   });
 
+  //setting schema to align with Paints Database
   const paintSchema = new mongoose.Schema({
     ColourName: String,
     DbR: Number,
@@ -45,13 +49,16 @@ async function CallToDatabase(req,res,next){
     DbB: Number
   })
 
+  //assinging Paint testing algorithm to the schema model
   PaintTesting =  mongoose.models.PaintQuery || mongoose.model("PaintQuery",paintSchema,"Paints")
   await PaintCollectionQuery()
 
+  //asnyc to wait until paint is found
   async function PaintCollectionQuery(){
     let FoundPaint = false;
 
-    let i = 1;
+    //single variable reused to broaden all query boundaries
+    let i = 1; //not 0 so there is always a targeted value which can be greater than the lower boundary, and lesser than the top boundary
     let R = parseInt(req.RgbData.R);
     let G = parseInt(req.RgbData.G);
     let B = parseInt(req.RgbData.B);
@@ -60,19 +67,20 @@ async function CallToDatabase(req,res,next){
       .where("DbR").lt((R)+i).gt((R)-i)
       .where("DbG").lt((G)+i).gt((G)-i)
       .where("DbB").lt((B)+i).gt((B)-i)
-      //.select("ColourName")
-      if ((Paint ) && (Paint != "")){
-        FoundPaint = true
-            const PaintName = ((Paint[0]["ColourName"]));
+      if ((Paint ) && (Paint != "")){ // if paint exists and is not empty
+        FoundPaint = true //end while loop
+            const PaintName = ((Paint[0]["ColourName"]));//set foundpaint to passable data
             const PaintR = ((Paint[0]["DbR"]));
             const PaintG = ((Paint[0]["DbG"]));
             const PaintB = ((Paint[0]["DbB"]));
-            let PaintRgb = [PaintR,PaintG,PaintB];
-            req.PaintName = PaintName;
+            let PaintRgb = [PaintR,PaintG,PaintB]; //create array from foundpaint data
+            req.PaintName = PaintName; //pass using request objects
             req.PaintRgb = PaintRgb;
             next()
       } else {
+        //increment all boundaries by 1
         i += 1;
+        //re-affirm loop status
         FoundPaint = false;
       }
     }
@@ -81,5 +89,4 @@ async function CallToDatabase(req,res,next){
 }
 
 
-//still no clue
 module.exports = ResultsRouter;

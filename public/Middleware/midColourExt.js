@@ -1,4 +1,4 @@
-//also used to render the Colour Extension page EJS.
+// used to render the Colour Extension page EJS.
 
 const express = require('express');
 //instance of a router function to route to Colour Extension
@@ -13,5 +13,4 @@ const ColourExtRouter = express.Router();
         });
 });
 
-//still no clue
 module.exports = ColourExtRouter;

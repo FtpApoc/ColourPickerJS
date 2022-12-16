@@ -1,4 +1,4 @@
-//also used to render the RGB Input page EJS.
+// used to render the RGB Input page EJS.
 
 const express = require('express');
 //instance of a router function to route to results

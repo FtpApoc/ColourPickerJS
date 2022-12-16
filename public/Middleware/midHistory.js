@@ -1,4 +1,4 @@
-//also used to render the History page EJS.
+//used to render the History page EJS.
 
 const express = require('express');
 //instance of a router function to route to results
@@ -12,5 +12,4 @@ const HistoryRouter = express.Router();
         });
 });
 
-//still no clue
 module.exports = HistoryRouter;

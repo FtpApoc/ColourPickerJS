@@ -1,6 +1,3 @@
-//Initalization Of Canvas Data for handling later
-//let CanvasImageData = []
-
 //Initalization and loading of canvas
 function Canvas(){
   const canvas = document.getElementById("myCanvas");
@@ -17,11 +14,11 @@ function Canvas(){
       //Click handler allows the passing of click object and canvas data to ClickUpdate
       const ClickHandler = (event) => PixelAdjust(
         event,
-        canvas.clientWidth,
-        canvas.clientHeight,
-        canvas.width,
-        canvas.height,
-        CanvasImageData
+        canvas.clientWidth, //width of image in same scope as offset
+        canvas.clientHeight, //height of image in same scope as offset
+        canvas.width, // static canvas width : 300
+        canvas.height, // static canvas height : 150
+        CanvasImageData // GetImageData array for canvas
       )
 
       //click event, with a for loop to instance
@@ -31,19 +28,26 @@ function Canvas(){
       }
 
   };
+
+  // the button to change the photo in frame
   const SubmitPhoto = document.getElementById("SubmitPhoto");
 
+  //function called from event listener
   function PhotoHandler(event){
     let  UploadedImage = "";
+    //set up file reader to interpret user input file
     const reader = new FileReader();
     reader.readAsDataURL(SubmitPhoto.files[0])
     reader.addEventListener("load", () => {
       UploadedImage = reader.result;
+      //re-draws the canvas with new image
       img.src = UploadedImage
     })
 
   }
+  //event listener calls to photo handler on change to button
   SubmitPhoto.addEventListener("change",PhotoHandler)
+  //original testing image, in rollout would be blank
   img.src = '/assets/TestImg.jpg';
 }
 //Combining All Elements needed to generate Pixel Location
