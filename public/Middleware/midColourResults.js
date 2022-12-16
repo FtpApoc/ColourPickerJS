@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+
 //instance of a router function to route to results
 const ResultsRouter = express.Router();
 
@@ -31,16 +32,15 @@ function DataPull(req,res,next){
 }
 
 async function CallToDatabase(req,res,next){
-  const url = 'mongodb://localhost:27017/ColourPickerJS';
+  const url = 'mongodb+srv://dbUser:PasswordForTesting@colourpickerjs.jwzryq7.mongodb.net/ColourPickerJS?retryWrites=true&w=majority';
   mongoose.set('strictQuery', true);
   mongoose.connect(url,
     () => {
-
+      console.log("connection")
   });
 
   const paintSchema = new mongoose.Schema({
     ColourName: String,
-    RgbString: Number,
     DbR: Number,
     DbG: Number,
     DbB: Number
@@ -50,13 +50,14 @@ async function CallToDatabase(req,res,next){
   await PaintCollectionQuery()
 
   async function PaintCollectionQuery(){
+    console.log("PCQ entered");
     let FoundPaint = false;
 
     let i = 1;
     let R = parseInt(req.RgbData.R);
     let G = parseInt(req.RgbData.G);
     let B = parseInt(req.RgbData.B);
-
+    console.log(PaintTesting)
     do {
       const Paint = await PaintTesting
       .where("DbR").lt((R)+i).gt((R)-i)
@@ -64,6 +65,7 @@ async function CallToDatabase(req,res,next){
       .where("DbB").lt((B)+i).gt((B)-i)
       //.select("ColourName")
       if ((Paint ) && (Paint != "")){
+        console.log(Paint)
         FoundPaint = true
             const PaintName = ((Paint[0]["ColourName"]));
             const PaintR = ((Paint[0]["DbR"]));
